@@ -12,10 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ${{matrix}}
-    strategy:
-      matrix:
-       os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -29,7 +26,3 @@ jobs:
       
     - name: Build with Gradle
       run: ./gradlew build
-
-  publish:
-    runs-on:
-      needs: build
