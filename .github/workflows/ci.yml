@@ -36,9 +36,6 @@ jobs:
       with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v1
 
     - name: Build and push
       id: docker_build
@@ -47,7 +44,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+          tags: paoqch/demo-app:latest
 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
